@@ -1,0 +1,181 @@
+.Header {
+    position: relative;
+    z-index: 9999;
+
+    &__top {
+        background: $brand-color;
+
+        &__nav {
+            display: flex;
+            border-left: 1px solid $brand-color-light;
+
+            &__item {
+                padding-top: 20px;
+                padding-bottom: 20px;
+                border-right: 1px solid $brand-color-light;
+                font-weight: 500;
+                font-size: 11px;
+                line-height: 20px;
+                color: $text-color-light;
+                text-transform: uppercase;
+                display: flex;
+                align-items: center;
+                transition: $transition-basic;
+
+                @include hover-focus() {
+                    background: $brand-color-light;
+                }
+
+                &:not(:last-child) {
+                    padding-left: 15px;
+                    padding-right: 15px;
+
+                    svg {
+                        margin-right: 20px;
+                    }
+                }
+
+                &:last-child {
+                    margin-left: auto;
+                    padding-left: 50px;
+                    padding-right: 50px;
+                    border-left: 1px solid $brand-color-light;
+
+                    svg {
+                        margin-left: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    &__bottom {
+        padding-top: 25px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid $border-color;
+        position: relative;
+
+        &__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        &__logo {
+            max-width: 65%;
+            position: relative;
+            z-index: 999;
+
+            img {
+                max-width: 100%;
+            }
+        }
+
+        &__nav {
+            margin-left: 10px;
+            margin-right: 10px;
+            display: flex;
+            flex-shrink: 0;
+
+            &__item {
+                padding: 20px;
+                border-radius: 5px;
+                font-weight: 500;
+                text-transform: uppercase;
+                display: block;
+                transition: $transition-basic;
+
+                &:not(:last-child) {
+                    margin-right: 10px;
+                }
+
+                @include hover-focus() {
+                    background: rgba(#f0f0f0, 0.5);
+                }
+            }
+        }
+
+        &__lang {
+            width: 210px;
+            height: 60px;
+            position: relative;
+            z-index: 50;
+            flex-shrink: 0;
+
+            &__inner {
+                width: 100%;
+                border-radius: 30px;
+                border: 1px solid $border-color;
+                background: #fff;
+                overflow: hidden;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 2;
+                user-select: none;
+            }
+
+            &__options {
+                display: none;
+            }
+
+            &__option {
+                padding: 20px 60px 20px 40px;
+                font-size: 15px;
+                line-height: 18px;
+                font-weight: 500;
+                color: $text-color-gray;
+                cursor: pointer;
+                text-transform: uppercase;
+                display: flex;
+                align-items: center;
+                position: relative;
+                transition: $transition-basic;
+
+                &:not(&--selected) {
+                    &:hover {
+                        background: #f0f0f0;
+                    }
+                }
+
+                &--selected {
+                    &::after {
+                        width: 10px;
+                        height: 10px;
+                        margin-top: -4px;
+                        border-width: 2px;
+                        border-style: solid;
+                        border-color: transparent $text-color-gray
+                            $text-color-gray transparent;
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        right: 40px;
+                        transform: translate(0%, -50%) rotate(45deg);
+                    }
+                }
+
+                img {
+                    width: 15px;
+                    margin-right: 5px;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}
+
+@include media-max($lg) {
+    .Header {
+        &__bottom {
+            padding-top: 15px;
+            padding-bottom: 15px;
+
+            &__inner {
+                height: 70px;
+                align-items: center;
+            }
+        }
+    }
+}

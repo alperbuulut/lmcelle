@@ -1,0 +1,12 @@
+.gallerySlider {
+    width: 100%;
+
+    &__slide {
+        width: 100%;
+        vertical-align: middle;
+
+        &:not(:first-child) {
+            display: none;
+        }
+    }
+}

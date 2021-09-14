@@ -1,0 +1,66 @@
+.mobile-menu {
+    width: 100%;
+    height: calc(100vh - 100px);
+    margin-top: 100px;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: $transition-complex;
+    z-index: 9998;
+    overflow: auto;
+
+    &.active {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    &__nav {
+        display: flex;
+        flex-direction: column;
+        text-transform: uppercase;
+        font-weight: 700;
+
+        &__item {
+            width: 100%;
+            padding: 20px;
+            border-bottom: 1px solid $border-color;
+            color: $brand-color;
+            display: flex;
+            align-items: center;
+
+            svg {
+                margin-right: 20px;
+            }
+
+            &.active {
+                background: #f0f0f0;
+            }
+        }
+    }
+
+    &__lang {
+        display: flex;
+
+        &__option {
+            flex: 1 0 0;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid $border-color;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:not(:last-child) {
+                border-right: 1px solid $border-color;
+            }
+
+            img {
+                width: 25px;
+                vertical-align: middle;
+            }
+        }
+    }
+}

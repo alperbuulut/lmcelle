@@ -1,0 +1,314 @@
+.Products {
+    margin-top: 35px;
+    padding-top: 35px;
+
+    &__list {
+        display: flex;
+    }
+
+    &__title {
+        margin-bottom: 150px;
+
+        &--lessMB {
+            margin-bottom: 100px;
+        }
+
+        &--hasLink {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &__link {
+            margin-left: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid $border-color;
+            font-size: 15px;
+            display: inline-block;
+            position: relative;
+            text-transform: uppercase;
+            flex-shrink: 0;
+
+            @include hover-focus() {
+                &::after {
+                    width: 100%;
+                }
+            }
+
+            &::after {
+                width: 0;
+                height: 1px;
+                background: $brand-color;
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -1px;
+                transition: $transition-complex;
+            }
+        }
+    }
+}
+
+.Product {
+    flex: 1;
+    margin-bottom: 30px;
+    border: 1px solid $border-color;
+    border-radius: 50px;
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition: $transition-basic;
+
+    $PRODUCT: &;
+
+    @include hover-focus {
+        background: $brand-color;
+
+        #{$PRODUCT} {
+            &__banner {
+                &__button {
+                    background: $brand-color-light !important;
+                }
+            }
+
+            &__title,
+            &__capacity,
+            &__features,
+            &__features > li span {
+                color: #fff;
+            }
+
+            &__features {
+                > li {
+                    border-bottom: 1px solid $brand-color-light;
+                }
+
+                &__icon {
+                    svg {
+                        * {
+                            fill: #fff;
+                        }
+                    }
+                }
+            }
+
+            &__button {
+                background: $brand-color-light;
+            }
+        }
+    }
+
+    &--noPT {
+        padding-top: 0;
+    }
+
+    &__img {
+        max-width: calc(100% - 80px);
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, -50%);
+    }
+
+    &__banner {
+        margin-bottom: 40px;
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+        position: relative;
+
+        &__img {
+            width: 100%;
+            border-top-left-radius: inherit;
+            border-top-right-radius: inherit;
+        }
+
+        &__button {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 50%);
+            bottom: 0;
+        }
+    }
+
+    &__content {
+        padding-left: 7%;
+        padding-right: 7%;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        &:not(#{&}--noPT) {
+            padding-top: 100px;
+        }
+    }
+
+    &__title {
+        margin-top: 0.4em;
+        margin-bottom: 0.4em;
+        font-weight: 500;
+        color: $brand-color;
+    }
+
+    &__capacity {
+        margin-bottom: 35px;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 1.25;
+        text-align: center;
+    }
+
+    &__bottom {
+        margin-top: auto;
+    }
+
+    &__features {
+        margin-bottom: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        text-align: left;
+
+        > li {
+            width: calc(50% - 20px);
+            padding-bottom: 15px;
+            border-bottom: 1px solid $border-color;
+            display: flex;
+            align-items: center;
+
+            &:not(:nth-child(-n + 2)) {
+                margin-top: 35px;
+            }
+        }
+
+        &__icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        &__text {
+            margin-left: 20px;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+
+            span {
+                margin-top: 5px;
+                font-weight: 500;
+                font-size: 15px;
+                color: $brand-color;
+                display: block;
+            }
+        }
+    }
+
+    &__button {
+        transform: translateY(50%);
+        text-align: center;
+        display: inline-block;
+    }
+}
+
+@include media-max($xs) {
+    .Product {
+        &__banner {
+            &__button {
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+@include media-max($sm) {
+    .Product {
+        &__features {
+            &__text {
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+@include media-max($md) {
+    .Products {
+        &__title {
+            margin-bottom: 100px;
+
+            &--lessMB {
+                margin-bottom: 50px;
+            }
+
+            &--hasLink {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            &__link {
+                margin-top: 20px;
+                margin-left: 0;
+            }
+        }
+
+        &__list {
+            flex-direction: column;
+        }
+    }
+
+    .Product {
+        max-width: 100%;
+
+        &:not(:first-child) {
+            margin-top: 80px;
+        }
+
+        &__img {
+            max-width: 250px;
+        }
+
+        &__content {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+}
+
+@include media($md, $lg) {
+    .Products {
+        &__list {
+            flex-wrap: wrap;
+        }
+    }
+
+    .Product {
+        width: calc(50% - 20px);
+        flex: none;
+
+        &:not(:nth-child(2n)) {
+            margin-right: 40px;
+        }
+
+        &:not(:nth-child(-n + 2)) {
+            margin-top: 80px;
+        }
+    }
+}
+
+@include media-max($lg) {
+    .Products {
+        margin-top: 0;
+        padding-top: 0;
+    }
+
+    .Product {
+        background: rgba(#f0f0f0, 0.75);
+        border-radius: 10px;
+    }
+}
+
+@include media-min($lg) {
+    .Product {
+        &:not(:last-child) {
+            margin-right: 40px;
+        }
+    }
+}

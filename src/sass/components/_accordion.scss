@@ -1,0 +1,157 @@
+.Accordion {
+    border-top: 1px solid $border-color;
+
+    $ACCORDION: &;
+
+    &__item {
+        border-bottom: 1px solid $border-color;
+
+        &__link {
+            padding: 20px 20px 20px 90px;
+            font-weight: 500;
+            text-transform: uppercase;
+            display: block;
+            position: relative;
+
+            &.active {
+                color: $brand-color;
+
+                #{$ACCORDION} {
+                    &__item {
+                        &__icon {
+                            background: $brand-color;
+
+                            &:not(#{$ACCORDION}__item__icon--noRotate) {
+                                transform: translate(0%, -50%) rotate(45deg);
+                            }
+
+                            svg {
+                                * {
+                                    fill: #fff;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &::after {
+                width: 8px;
+                height: 8px;
+                margin-top: -2px;
+                border-width: 2px;
+                border-color: transparent $brand-color $brand-color transparent;
+                border-style: solid;
+                content: '';
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translate(0, -50%) rotate(45deg);
+            }
+        }
+
+        &__icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 30px;
+            transform: translate(0%, -50%);
+            transition: $transition-complex;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+                transition: $transition-complex;
+
+                * {
+                    transition: $transition-complex;
+                }
+            }
+        }
+
+        &__content {
+            min-width: 1px !important;
+            padding-top: 10px;
+            padding-bottom: 20px;
+            margin-left: 90px;
+            display: none;
+
+            &--hasSlider {
+                padding-bottom: 100px;
+                position: relative;
+
+                .slick {
+                    &-dots,
+                    &-arrow {
+                        position: absolute;
+                        bottom: -50px;
+                    }
+
+                    &-dots {
+                        width: calc(100% - 100px);
+                        left: 50%;
+                        transform: translate(-50%, 50%);
+                        justify-content: center;
+                    }
+
+                    &-arrow {
+                        transform: translate(0, 50%);
+                    }
+
+                    &-prev {
+                        left: 0;
+                    }
+
+                    &-next {
+                        right: 0;
+                    }
+                }
+            }
+        }
+
+        &__list {
+            column-count: 2;
+            column-gap: 30px;
+        }
+    }
+}
+
+@include media-max($lg) {
+    .Accordion {
+        &--noMobileBT {
+            border-top: none;
+        }
+
+        &__item {
+            &__link {
+                padding-left: 50px;
+            }
+
+            &__icon {
+                left: 0;
+            }
+
+            &__content {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            &__list {
+                column-gap: 20px;
+            }
+        }
+    }
+}
+
+@include media-max($md) {
+    .Accordion {
+        &__item {
+            &__list {
+                column-count: 1;
+            }
+        }
+    }
+}

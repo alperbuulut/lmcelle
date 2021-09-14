@@ -1,0 +1,33 @@
+// Colors
+$brand-color-light: #eb3654;
+$brand-color: #c52c45;
+$text-color-gray: #b2b2b2;
+$text-color-light: #fff;
+$text-color: #454545;
+$border-color: #ececec;
+
+// Layout
+$max-width: 1520;
+$gutter: 20px;
+
+// Transition
+$transition-basic: 0.125s;
+$transition-complex: 0.35s;
+$transition-long: 0.5s;
+
+// Visibility Breakpoints
+$visibility-breakpoints: (
+    xs: 480,
+    sm: 568,
+    md: 768,
+    lg: 1024,
+    xl: $max-width,
+    xxl: 1920,
+);
+
+$xs: map-get($visibility-breakpoints, 'xs');
+$sm: map-get($visibility-breakpoints, 'sm');
+$md: map-get($visibility-breakpoints, 'md');
+$lg: map-get($visibility-breakpoints, 'lg');
+$xl: map-get($visibility-breakpoints, 'xl');
+$xxl: map-get($visibility-breakpoints, 'xxl');

@@ -1,0 +1,124 @@
+.Advantages {
+    padding-bottom: 150px;
+
+    $ADVANTAGES: &;
+
+    &__title {
+        margin-bottom: 40px;
+        font-size: 20px;
+        color: $brand-color;
+    }
+
+    @keyframes slide {
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+    &__slider {
+        display: flex;
+
+        &:hover,
+        &.active {
+            #{$ADVANTAGES}__items {
+                animation-play-state: paused;
+            }
+        }
+    }
+
+    &__items {
+        display: flex;
+        justify-content: space-around;
+        flex-shrink: 0;
+        animation: slide 20s infinite linear;
+    }
+
+    &__item {
+        margin-left: 35px;
+        margin-right: 35px;
+        color: $border-color;
+        transition: $transition-complex;
+        position: relative;
+
+        $ITEM: &;
+
+        &:hover,
+        &.active {
+            color: $brand-color;
+
+            #{$ITEM}__text {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+
+        &__title {
+            color: inherit;
+        }
+
+        &__text {
+            width: 490px;
+            padding-top: 40px;
+            color: $text-color;
+            visibility: hidden;
+            opacity: 0;
+            transition: $transition-complex;
+            position: absolute;
+            left: 0;
+            top: 100%;
+        }
+    }
+}
+
+@include media-max($lg) {
+    .Advantages {
+        padding-bottom: 0 !important;
+
+        &__slider {
+            padding-bottom: $gutter;
+            overflow: auto;
+        }
+
+        &__items {
+            animation: none;
+
+            &:last-child {
+                display: none;
+            }
+        }
+
+        &__item {
+            margin-left: $gutter;
+            margin-right: $gutter;
+
+            &__title {
+                color: $brand-color;
+            }
+
+            &__text {
+                width: 100%;
+                padding-top: 20px;
+                visibility: visible;
+                opacity: 1;
+                position: relative;
+                top: 0;
+            }
+        }
+    }
+}
+
+@include media-max($sm) {
+    .Advantages {
+        &__item {
+            width: calc(80vw - #{$gutter * 2});
+        }
+    }
+}
+
+@include media($sm, $lg) {
+    .Advantages {
+        &__item {
+            width: calc(45vw - #{$gutter * 2});
+        }
+    }
+}

@@ -1,0 +1,373 @@
+.Footer {
+    &__inner {
+        padding-top: 100px;
+        padding-bottom: 100px;
+        background: $brand-color;
+
+        &__top {
+            padding-left: $gutter * 3;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+    }
+
+    &__newsletter {
+        flex: 1;
+        max-width: $max-width * 1px / 2 - $gutter;
+        padding-right: 80px;
+        display: flex;
+        flex-direction: column;
+
+        &__title {
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        &__form {
+            display: flex;
+            align-items: center;
+        }
+
+        &__input {
+            flex: 1 0 0;
+            max-width: 340px;
+            height: 35px;
+            border-bottom: 1px solid $brand-color-light !important;
+            background: transparent;
+            border: none;
+            appearance: none;
+            font-size: 15px;
+            color: #fff;
+            @include placeholder-color(#fff);
+        }
+
+        &__button {
+            width: 30px;
+            height: 30px;
+            margin-left: 35px;
+            border-radius: 50%;
+            border: none;
+            background: $brand-color-light;
+            position: relative;
+            display: block;
+            transition: $transition-basic;
+            flex-shrink: 0;
+
+            @include hover-focus() {
+                background: #fff;
+
+                &::after {
+                    border-color: $brand-color $brand-color transparent
+                        transparent;
+                }
+            }
+
+            &::after {
+                width: 8px;
+                height: 8px;
+                margin-left: -2px;
+                border-width: 2px;
+                border-color: #fff #fff transparent transparent;
+                border-style: solid;
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%) rotate(45deg);
+                transition: $transition-basic;
+            }
+        }
+    }
+
+    &__flag {
+        width: 50%;
+        padding: 60px 40px 60px 80px;
+        color: $brand-color;
+        background: #fff;
+        border-top-left-radius: 9999px;
+        border-bottom-left-radius: 9999px;
+        transition: $transition-complex;
+
+        @include hover-focus {
+            background: $brand-color-light;
+            color: #fff;
+        }
+    }
+
+    &__blocks {
+        margin-top: 100px;
+        display: flex;
+    }
+
+    &__block {
+        &__title {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid $brand-color-light;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        &__content {
+            line-height: 2;
+            color: #fff;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            a {
+                display: inline-block;
+
+                @include hover-focus() {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        &__social {
+            display: flex;
+
+            &__link {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                background: $brand-color-light;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: $transition-basic;
+
+                svg * {
+                    transition: $transition-basic;
+                }
+
+                &:not(:last-child) {
+                    margin-right: 20px;
+                }
+
+                @include hover-focus() {
+                    background: #fff;
+
+                    svg * {
+                        fill: $brand-color;
+                    }
+                }
+            }
+        }
+    }
+
+    &__bottom {
+        &__top {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background: #fff;
+
+            &__inner {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+    }
+
+    &__credits {
+        text-transform: uppercase;
+        font-size: 11px;
+        display: flex;
+
+        > div,
+        a {
+            &:not(:last-child) {
+                margin-right: 90px;
+            }
+        }
+
+        > a {
+            @include hover-focus() {
+                color: $brand-color;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__scrollTop {
+        width: 60px;
+        height: 60px;
+        background: #fff;
+        border: 1px solid $border-color;
+        border-radius: 50%;
+        transition: $transition-basic;
+        position: relative;
+        flex-shrink: 0;
+
+        @include hover-focus() {
+            background: $brand-color;
+
+            &::after {
+                border-color: #fff transparent transparent #fff;
+            }
+        }
+
+        &::after {
+            width: 8px;
+            height: 8px;
+            margin-top: 2px;
+            border-width: 2px;
+            border-style: solid;
+            border-color: $brand-color transparent transparent $brand-color;
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            transition: $transition-basic;
+        }
+    }
+}
+
+@include media-max($sm) {
+    .Footer {
+        &__blocks {
+            flex-direction: column;
+        }
+
+        &__block {
+            &:not(:first-child) {
+                margin-top: $gutter;
+            }
+        }
+    }
+}
+
+@include media($sm, $md) {
+    .Footer {
+        &__blocks {
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        &__block {
+            width: calc(50% - #{$gutter / 2});
+
+            &:not(:nth-child(-n + 2)) {
+                margin-top: $gutter;
+            }
+        }
+    }
+}
+
+@include media-min($md) {
+    .Footer {
+        &__block {
+            flex: 1;
+
+            &:not(:last-child) {
+                margin-right: 50px;
+            }
+        }
+    }
+}
+
+@include media-max($md) {
+    .Footer {
+        &__inner {
+            padding-top: $gutter;
+            padding-bottom: $gutter;
+
+            &__top {
+                padding-left: $gutter;
+                padding-right: $gutter;
+                flex-direction: column-reverse;
+            }
+        }
+
+        &__flag {
+            width: 100%;
+            margin-bottom: $gutter;
+            padding: 20px;
+            border-radius: 100px;
+            text-align: center;
+        }
+
+        &__newsletter {
+            width: 100%;
+
+            &__title {
+                margin-bottom: 20px;
+            }
+        }
+
+        &__newsletter,
+        &__block {
+            padding: 20px;
+            background: rgba(#fff, 0.1);
+            border-radius: 5px;
+        }
+
+        &__blocks {
+            margin-top: $gutter;
+        }
+
+        &__credits {
+            flex-direction: column;
+
+            > div,
+            a {
+                font-size: 12px;
+
+                &:not(:first-child) {
+                    margin-top: 10px;
+                }
+
+                &:not(:last-child) {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}
+
+@include media($md, $lg) {
+    .Footer {
+        &__inner {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        &__flag {
+            width: 40%;
+            padding: 20px;
+        }
+
+        &__blocks {
+            margin-top: 60px;
+        }
+
+        &__block {
+            &:not(:last-child) {
+                margin-right: 30px;
+            }
+        }
+
+        &__credits {
+            > div,
+            a {
+                &:not(:last-child) {
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+}
+
+@include media-max($lg) {
+    .Footer {
+        &__inner {
+            &__top {
+                padding-left: $gutter;
+                align-items: flex-start;
+            }
+        }
+    }
+}

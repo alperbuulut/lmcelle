@@ -1,0 +1,38 @@
+* {
+    transition-timing-function: ease-in;
+    -webkit-overflow-scrolling: touch;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: $text-color;
+}
+
+.Wrapper {
+    &.active {
+        height: 100vh;
+        overflow: hidden;
+    }
+}
+
+.center {
+    max-width: $max-width * 1px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $gutter * 3;
+    padding-right: $gutter * 3;
+}
+
+@include media-max($lg) {
+    .center {
+        padding-left: $gutter;
+        padding-right: $gutter;
+    }
+}

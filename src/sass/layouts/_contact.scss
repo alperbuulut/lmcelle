@@ -1,0 +1,240 @@
+.Contact {
+    &__top {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__search {
+        width: 100%;
+        max-width: 410px;
+        display: flex;
+
+        &__input {
+            flex: 1;
+            height: 60px;
+            padding-right: 60px;
+            padding-left: 30px;
+            background: url(../images/svg/search.svg) no-repeat right 30px
+                center;
+            border-radius: 50px;
+            border: 1px solid $border-color;
+            font-size: 11px;
+            transition: $transition-basic;
+            @include placeholder-color($text-color-gray);
+
+            &:focus {
+                border: 1px solid $brand-color;
+            }
+        }
+
+        &__button {
+            width: 60px;
+            height: 60px;
+            margin-left: 15px;
+            border: 1px solid $brand-color;
+            border-radius: 50%;
+            background: $brand-color;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: $transition-basic;
+
+            @include hover-focus {
+                background: #fff;
+
+                svg {
+                    * {
+                        stroke: $brand-color;
+                    }
+                }
+            }
+
+            svg {
+                * {
+                    transition: $transition-basic;
+                }
+            }
+        }
+    }
+
+    &__nav {
+        margin-left: $gutter;
+    }
+
+    &__bottom {
+        display: flex;
+    }
+
+    &__left {
+        position: relative;
+        padding-left: calc((100% - #{$max-width * 1px}) / 2);
+
+        &__inner {
+            padding-left: $gutter * 3;
+
+            &:not(.no-shadow) {
+                &::after {
+                    width: calc(100% - 3px);
+                    height: 100px;
+                    background: linear-gradient(to top, #fff, rgba(#fff, 0.01));
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                }
+            }
+
+            &::before {
+                width: 1px;
+                height: 100%;
+                background: $border-color;
+                content: '';
+                position: absolute;
+                left: $gutter * 3 + 2px;
+                top: 0;
+            }
+        }
+    }
+
+    &__addresses {
+        width: 410px;
+        height: 600px;
+        overflow: auto;
+        position: relative;
+
+        > li {
+            &:last-child {
+                z-index: 9999;
+            }
+        }
+
+        &::-webkit-scrollbar {
+            width: 3px;
+            background-color: #f7f7f7;
+            border-radius: 3px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 3px;
+            background-color: #ececec;
+        }
+
+        &::-webkit-scrollbar-track {
+            border-radius: 3px;
+            background-color: #f7f7f7;
+        }
+    }
+
+    &__right {
+        padding-left: 50px;
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+
+    &__map {
+        height: 600px;
+        background: #999;
+
+        .leaflet-bottom.leaflet-right {
+            visibility: hidden;
+        }
+    }
+}
+
+@include media-max($sm) {
+    .Contact {
+        &__map {
+            height: 250px;
+        }
+    }
+}
+
+@include media($sm, $lg) {
+    .Contact {
+        &__addresses {
+            display: flex;
+
+            > li {
+                width: 50%;
+            }
+        }
+
+        &__map {
+            height: 300px;
+        }
+    }
+}
+
+@include media-max($lg) {
+    .Contact {
+        &__top {
+            padding: $gutter $gutter ($gutter / 2);
+            flex-direction: column-reverse;
+        }
+
+        &__search {
+            max-width: 100%;
+
+            &__input {
+                padding-right: 45px;
+                padding-left: 10px;
+                background-position: right 15px center;
+            }
+
+            &__button {
+                margin-left: $gutter / 2;
+            }
+        }
+
+        &__nav {
+            width: 100%;
+            margin-bottom: $gutter;
+            margin-left: 0;
+        }
+
+        &__bottom {
+            flex-direction: column;
+        }
+
+        &__left {
+            &__inner {
+                padding-left: 0;
+                padding-right: 0;
+
+                &::before,
+                &::after {
+                    display: none;
+                }
+            }
+        }
+
+        &__addresses {
+            width: 100%;
+            height: auto;
+            flex-wrap: wrap;
+
+            &::before {
+                display: none;
+            }
+
+            > li {
+                padding: 10px $gutter !important;
+                border-bottom: 1px solid $border-color;
+                flex-shrink: 0;
+
+                &::before {
+                    display: none;
+                }
+            }
+        }
+
+        &__right {
+            margin-top: $gutter;
+            padding-left: 0;
+        }
+    }
+}

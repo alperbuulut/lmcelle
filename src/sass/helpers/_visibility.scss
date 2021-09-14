@@ -1,0 +1,19 @@
+@each $key, $val in $visibility-breakpoints {
+    // Hide elements on screen > $value
+    .hidden-#{$key}-up {
+        @include media-min($val) {
+            display: none !important;
+        }
+    }
+
+    // Hide elements on screen < $value
+    .hidden-#{$key}-down {
+        @include media-max($val) {
+            display: none !important;
+        }
+    }
+}
+
+.hide {
+    display: none !important;
+}

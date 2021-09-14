@@ -1,0 +1,42 @@
+.Features {
+    margin-top: 50px;
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-between;
+
+    &__section {
+        width: calc(50% - 30px);
+    }
+
+    &__title {
+        margin-bottom: 40px;
+        display: flex;
+        align-items: center;
+
+        svg {
+            margin-right: 0.75em;
+            width: 1em;
+            height: 1em;
+        }
+    }
+}
+
+@include media-max($lg) {
+    .Features {
+        margin-top: 0;
+        padding-top: 0;
+        flex-direction: column;
+
+        &__section {
+            width: 100%;
+
+            &:not(:first-child) {
+                margin-top: 40px;
+            }
+
+            &--noMobileMT {
+                margin-top: 0 !important;
+            }
+        }
+    }
+}

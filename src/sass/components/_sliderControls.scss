@@ -1,0 +1,113 @@
+.slick {
+    &-dots {
+        display: flex !important;
+        position: absolute;
+        z-index: 2;
+        flex-wrap: wrap;
+
+        > li {
+            width: 10px;
+            height: 10px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border-radius: 50%;
+            background: $brand-color;
+            text-indent: -9999px;
+            transition: $transition-basic;
+            cursor: pointer;
+
+            &:not(.slick-active) {
+                transform: scale(0.8);
+                opacity: 0.25;
+            }
+
+            &:not(:last-child) {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    &-arrow {
+        width: 50px;
+        height: 50px;
+        background: #fff;
+        border: 1px solid $border-color;
+        border-radius: 50%;
+        text-indent: -9999px;
+        position: absolute;
+        z-index: 3;
+        transition: background $transition-basic;
+
+        @include hover-focus() {
+            background: $brand-color;
+        }
+
+        &::after {
+            width: 8px;
+            height: 8px;
+            border-width: 2px;
+            border-style: solid;
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            transition: $transition-basic;
+        }
+    }
+
+    &-next {
+        @include hover-focus() {
+            &::after {
+                border-color: #fff #fff transparent transparent;
+            }
+        }
+
+        &::after {
+            margin-left: -2px;
+            border-color: $brand-color $brand-color transparent transparent;
+        }
+    }
+
+    &-prev {
+        @include hover-focus() {
+            &::after {
+                border-color: transparent transparent #fff #fff;
+            }
+        }
+
+        &::after {
+            margin-left: 2px;
+            border-color: transparent transparent $brand-color $brand-color;
+        }
+    }
+}
+
+@include media-max($lg) {
+    .slick {
+        &-arrow {
+            width: 40px;
+            height: 40px;
+            background: $brand-color;
+        }
+
+        &-prev {
+            &::after {
+                border-color: transparent transparent $text-color-light
+                    $text-color-light;
+            }
+        }
+
+        &-next {
+            &::after {
+                border-color: $text-color-light $text-color-light transparent
+                    transparent;
+            }
+        }
+
+        &-dots {
+            width: calc(100% - 100px) !important;
+            justify-content: center;
+        }
+    }
+}

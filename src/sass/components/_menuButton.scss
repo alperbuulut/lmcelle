@@ -1,0 +1,176 @@
+$menu-button-line-color: $brand-color;
+
+.menu-button {
+    width: 32px;
+    height: 44px;
+    margin-top: 4px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    display: block;
+    cursor: pointer;
+    z-index: 110;
+    pointer-events: auto;
+    transform-origin: right;
+    transition: 0.4s;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    right: $gutter;
+    transform: translate(0%, -50%);
+    z-index: 9999;
+    appearance: none;
+
+    $self: &;
+
+    &__line {
+        width: 31px;
+        height: 3px;
+        overflow: hidden;
+        position: absolute;
+        z-index: 10;
+        transition-duration: 0.6s;
+        transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+
+        &-in {
+            width: 94px;
+            height: 2px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition-duration: 0.6s;
+            transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+
+            &::before,
+            &::after {
+                width: 31px;
+                height: 2px;
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                background-color: $menu-button-line-color;
+                transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+                transition-property: transform;
+            }
+
+            &::before {
+                left: -63px;
+            }
+
+            &::after {
+                left: 0;
+            }
+
+            &--cross01,
+            &--cross02 {
+                transform: translateX(-33.3%);
+            }
+
+            &--cross01 {
+                transition-delay: 0s;
+            }
+
+            &--cross02 {
+                transition-delay: 0.05s;
+
+                &::before,
+                &::after {
+                    transition-delay: 0.1s;
+                }
+            }
+
+            &--01 {
+                transition-delay: 0.2s;
+            }
+
+            &--02 {
+                transition-delay: 0.25s;
+
+                &::before,
+                &::after {
+                    transition-delay: 0.05s;
+                }
+            }
+
+            &--03 {
+                transition-delay: 0.3s;
+
+                &::before,
+                &::after {
+                    transition-delay: 0.1s;
+                }
+            }
+        }
+
+        &--01,
+        &--02,
+        &--03,
+        &--cross01,
+        &--cross02 {
+            left: 0;
+        }
+
+        &--01 {
+            top: 14.6px;
+        }
+
+        &--02,
+        &--cross01,
+        &--cross02 {
+            top: 21px;
+        }
+
+        &--03 {
+            top: 27.4px;
+        }
+
+        &--cross01 {
+            transform: rotate(45deg);
+        }
+
+        &--cross02 {
+            transform: rotate(-45deg);
+        }
+    }
+
+    // Opened
+    &.active {
+        #{$self} {
+            &__line {
+                &-in {
+                    &--01,
+                    &--02,
+                    &--03 {
+                        transform: translateX(33.3%);
+                    }
+
+                    &--01 {
+                        transition-delay: 0s;
+                    }
+
+                    &--02 {
+                        transition-delay: 0.05s;
+                    }
+
+                    &--03 {
+                        transition-delay: 0.1s;
+                    }
+
+                    &--cross01,
+                    &--cross02 {
+                        transform: translateX(0);
+                    }
+
+                    &--cross01 {
+                        transition-delay: 0.25s;
+                    }
+
+                    &--cross02 {
+                        transition-delay: 0.3s;
+                    }
+                }
+            }
+        }
+    }
+}

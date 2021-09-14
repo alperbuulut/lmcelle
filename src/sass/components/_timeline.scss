@@ -1,0 +1,41 @@
+.Timeline {
+    padding-left: 2px;
+    position: relative;
+
+    &::before {
+        width: 1px;
+        height: 100%;
+        background: $border-color;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 2px;
+    }
+
+    &__item {
+        padding-left: 20px;
+        line-height: 2;
+        position: relative;
+
+        &:not(:last-child) {
+            padding-bottom: 45px;
+        }
+
+        &::before {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: $brand-color;
+            content: '';
+            position: absolute;
+            top: 14px;
+            left: 0;
+            transform: translate(-40%, 0);
+        }
+    }
+
+    &__date {
+        font-weight: 700;
+        color: $brand-color;
+    }
+}
